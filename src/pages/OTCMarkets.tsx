@@ -92,7 +92,7 @@ const OTCMarkets = () => {
       title="Financial OTC Oil Markets" 
       description="OTC market structure, Asian swap pricing, and forward curves"
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* OTC Market Structure */}
         <Card>
           <CardHeader>
@@ -271,17 +271,10 @@ const OTCMarkets = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-80 mb-6">
+            <div className="chart-container quarterly-curves-chart-container">
               <ChartContainer config={{ brent: { label: "Brent Quarterly", color: "#2563eb" }, wti: { label: "WTI Quarterly", color: "#dc2626" } }}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={[
-                    { period: 'Q1 2020', brent: 66.02, wti: 58.54 },
-                    { period: 'Q2 2020', brent: 63.49, wti: 58.44 },
-                    { period: 'Q3 2020', brent: 62.79, wti: 58.33 },
-                    { period: 'Q4 2020', brent: 62.46, wti: 58.30 },
-                    { period: 'Q1 2021', brent: 62.18, wti: 58.27 },
-                    { period: 'Q2 2021', brent: 61.95, wti: 58.25 }
-                  ]}>
+                  <LineChart data={quarterlyForwards}>
                     <XAxis dataKey="period" />
                     <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
                     <ChartTooltip content={<ChartTooltipContent />} />
@@ -291,6 +284,7 @@ const OTCMarkets = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
+            <div className="chart-spacer"></div>
 
             <div className="p-4 bg-gray-50 rounded-lg">
               <h4 className="font-semibold text-gray-800 mb-2">Forward Curve Analysis</h4>

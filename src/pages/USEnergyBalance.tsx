@@ -93,7 +93,7 @@ const USEnergyBalance = () => {
       title="US Energy Balance Transformation" 
       description="Shale oil breakeven economics and geopolitical implications"
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* Shale Oil Breakeven Economics */}
         <Card>
           <CardHeader>
@@ -106,7 +106,7 @@ const USEnergyBalance = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96 mb-6">
+            <div className="chart-container us-energy-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={shaleBreakeven} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
@@ -126,6 +126,7 @@ const USEnergyBalance = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
+            <div className="chart-spacer"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {shaleBreakeven.map((play, index) => (
                 <div key={play.region} className="p-4 border rounded-lg">
@@ -155,7 +156,7 @@ const USEnergyBalance = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96 mb-4">
+            <div className="chart-container us-energy-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={wtiSpread}>
@@ -173,6 +174,7 @@ const USEnergyBalance = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
+            <div className="chart-spacer"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 bg-red-50 rounded-lg">
                 <h4 className="font-semibold text-red-800 mb-2">Peak Disconnect (2011-2013)</h4>

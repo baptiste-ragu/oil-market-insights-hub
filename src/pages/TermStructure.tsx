@@ -1,3 +1,4 @@
+
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -112,7 +113,7 @@ const TermStructure = () => {
       title="Term Structure Analysis" 
       description="Forward curve dynamics, contango, and backwardation patterns"
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* Forward Curve Dynamics */}
         <Card>
           <CardHeader>
@@ -161,7 +162,7 @@ const TermStructure = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <h4 className="text-lg font-semibold text-green-800 mb-4">March 2009 - Super Contango</h4>
-                <div className="h-64">
+                <div className="chart-container">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={historicalCurves2009}>
@@ -183,7 +184,7 @@ const TermStructure = () => {
 
               <div>
                 <h4 className="text-lg font-semibold text-red-800 mb-4">March 2012 - Backwardation</h4>
-                <div className="h-64">
+                <div className="chart-container">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={historicalCurves2012}>
@@ -203,6 +204,7 @@ const TermStructure = () => {
                 </div>
               </div>
             </div>
+            <div className="chart-spacer"></div>
 
             <div className="space-y-6">
               {marketExamples.map((example, index) => (
@@ -255,7 +257,7 @@ const TermStructure = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-64 mb-6">
+            <div className="chart-container wti-spread-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={wtiSpreadData}>
@@ -294,6 +296,7 @@ const TermStructure = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
+            <div className="chart-spacer"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 bg-red-50 rounded-lg">

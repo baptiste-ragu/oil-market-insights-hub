@@ -123,7 +123,7 @@ const EnergyTransformation = () => {
       title="The New Energy Market Picture" 
       description="Upstream revolution, downstream transformation, and emerging trade routes"
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* Three Transformation Areas Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {transformationAreas.map((area, index) => (
@@ -157,7 +157,7 @@ const EnergyTransformation = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96">
+            <div className="chart-container production-profile-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={productionProfiles}>
@@ -187,7 +187,8 @@ const EnergyTransformation = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div className="chart-spacer"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <h4 className="font-semibold text-blue-800 mb-2">Conventional Fields (e.g., Cantarell)</h4>
                 <p className="text-sm text-blue-700">Gradual decline over 40+ years with sustained production</p>
@@ -209,7 +210,7 @@ const EnergyTransformation = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96">
+            <div className="chart-container refining-margin-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={refiningMargins}>
@@ -241,7 +242,8 @@ const EnergyTransformation = () => {
                 </ResponsiveContainer>
               </ChartContainer>
             </div>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <div className="chart-spacer"></div>
+            <div className="p-4 bg-gray-50 rounded-lg">
               <h4 className="font-semibold mb-2">US Re-industrialization Impact</h4>
               <p className="text-gray-700">
                 $90 billion invested in petrochemical sector (2012-2017) created significant competitive advantages 

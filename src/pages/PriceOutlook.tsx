@@ -6,6 +6,7 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, Comp
 import { Activity, TrendingUp, Globe, AlertTriangle, DollarSign, BarChart3 } from 'lucide-react';
 import LivePriceDashboard from '@/components/LivePriceDashboard';
 import NewsAggregation from '@/components/NewsAggregation';
+
 const PriceOutlook = () => {
   const supplyIndicators = [{
     category: 'OPEC Monitoring',
@@ -142,7 +143,11 @@ const PriceOutlook = () => {
     'Medium': '#f59e0b',
     'Low': '#10b981'
   };
-  return <Layout title="Oil Price Outlook Framework" description="Supply monitoring, demand analysis, and geopolitical risk assessment">
+  return (
+    <Layout 
+      title="Oil Price Outlook Framework" 
+      description="Supply monitoring, demand analysis, and geopolitical risk assessment"
+    >
       <div className="space-y-12">
         {/* Live Price Dashboard */}
         <LivePriceDashboard />
@@ -187,30 +192,25 @@ const PriceOutlook = () => {
               OECD stocks comparison versus 5-year averages and strategic reserves
             </CardDescription>
           </CardHeader>
-          <CardContent className="my-0 px-0 mx-[100px]">
-            <div className="h-96">
+          <CardContent>
+            <div className="chart-container price-outlook-chart-container">
               <ChartContainer config={chartConfig}>
-                <ComposedChart data={inventoryData}>
-                  <XAxis dataKey="region" angle={-45} textAnchor="end" height={80} interval={0} fontSize={12} />
-                  <YAxis yAxisId="left" label={{
-                  value: 'Million Barrels',
-                  angle: -90,
-                  position: 'insideLeft'
-                }} />
-                  <YAxis yAxisId="right" orientation="right" label={{
-                  value: 'Days Coverage',
-                  angle: 90,
-                  position: 'insideRight'
-                }} />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <Bar yAxisId="left" dataKey="current" fill="#2563eb" name="Current Stocks" />
-                  <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
-                  <Line yAxisId="right" type="monotone" dataKey="daysCoverage" stroke="#dc2626" strokeWidth={3} name="Days Coverage" />
-                </ComposedChart>
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={inventoryData}>
+                    <XAxis dataKey="region" angle={-45} textAnchor="end" height={80} interval={0} fontSize={12} />
+                    <YAxis yAxisId="left" label={{ value: 'Million Barrels', angle: -90, position: 'insideLeft' }} />
+                    <YAxis yAxisId="right" orientation="right" label={{ value: 'Days Coverage', angle: 90, position: 'insideRight' }} />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar yAxisId="left" dataKey="current" fill="#2563eb" name="Current Stocks" />
+                    <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
+                    <Line yAxisId="right" type="monotone" dataKey="daysCoverage" stroke="#dc2626" strokeWidth={3} name="Days Coverage" />
+                  </ComposedChart>
+                </ResponsiveContainer>
               </ChartContainer>
             </div>
+            <div className="chart-spacer"></div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <h4 className="font-semibold text-blue-800 mb-2">OECD Total Stocks</h4>
                 <p className="text-sm text-blue-700">
@@ -341,22 +341,21 @@ const PriceOutlook = () => {
               {/* Critical Infrastructure */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Critical Infrastructure</h3>
-                <div className="h-80">
+                <div className="chart-container price-outlook-chart-container">
                   <ChartContainer config={chartConfig}>
-                    <BarChart data={criticalInfrastructure}>
-                      <XAxis dataKey="location" angle={-45} textAnchor="end" height={100} interval={0} fontSize={12} />
-                      <YAxis label={{
-                      value: 'Million Barrels/Day',
-                      angle: -90,
-                      position: 'insideLeft'
-                    }} />
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                      <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
-                    </BarChart>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={criticalInfrastructure}>
+                        <XAxis dataKey="location" angle={-45} textAnchor="end" height={100} interval={0} fontSize={12} />
+                        <YAxis label={{ value: 'Million Barrels/Day', angle: -90, position: 'insideLeft' }} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </ChartContainer>
                 </div>
+                <div className="chart-spacer"></div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {criticalInfrastructure.map((infra, index) => <div key={infra.location} className="p-4 bg-red-50 rounded-lg">
                       <h4 className="font-semibold text-red-800">{infra.location}</h4>
                       <p className="text-sm text-red-700 mb-1">{infra.flow} Mb/d transit volume</p>
@@ -396,6 +395,8 @@ const PriceOutlook = () => {
           </CardContent>
         </Card>
       </div>
-    </Layout>;
+    </Layout>
+  );
 };
+
 export default PriceOutlook;
