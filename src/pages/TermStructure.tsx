@@ -1,4 +1,3 @@
-
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -256,7 +255,7 @@ const TermStructure = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-80 mb-6">
+            <div className="h-64 mb-6">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={wtiSpreadData}>
