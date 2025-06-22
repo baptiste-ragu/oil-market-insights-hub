@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, ComposedChart, Area, AreaChart } from 'recharts';
 import { Activity, TrendingUp, Globe, AlertTriangle, DollarSign, BarChart3 } from 'lucide-react';
 import LivePriceDashboard from '@/components/LivePriceDashboard';
@@ -240,33 +240,31 @@ const PriceOutlook = () => {
           </CardHeader>
           <CardContent>
             <ChartContainer height="400px">
-              <ChartContainer config={chartConfig}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={inventoryData}>
-                    <XAxis 
-                      dataKey="region" 
-                      angle={-45}
-                      textAnchor="end"
-                      height={80}
-                      interval={0}
-                      fontSize={12}
-                    />
-                    <YAxis 
-                      yAxisId="left" 
-                      label={{ value: 'Million Barrels', angle: -90, position: 'insideLeft' }}
-                    />
-                    <YAxis 
-                      yAxisId="right" 
-                      orientation="right"
-                      label={{ value: 'Days Coverage', angle: 90, position: 'insideRight' }}
-                    />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Bar yAxisId="left" dataKey="current" fill="#2563eb" name="Current Stocks" />
-                    <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
-                    <Line yAxisId="right" type="monotone" dataKey="daysCoverage" stroke="#dc2626" strokeWidth={3} name="Days Coverage" />
-                  </ComposedChart>
-                </ResponsiveContainer>
-              </ChartContainer>
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={inventoryData}>
+                  <XAxis 
+                    dataKey="region" 
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                    interval={0}
+                    fontSize={12}
+                  />
+                  <YAxis 
+                    yAxisId="left" 
+                    label={{ value: 'Million Barrels', angle: -90, position: 'insideLeft' }}
+                  />
+                  <YAxis 
+                    yAxisId="right" 
+                    orientation="right"
+                    label={{ value: 'Days Coverage', angle: 90, position: 'insideRight' }}
+                  />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar yAxisId="left" dataKey="current" fill="#2563eb" name="Current Stocks" />
+                  <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
+                  <Line yAxisId="right" type="monotone" dataKey="daysCoverage" stroke="#dc2626" strokeWidth={3} name="Days Coverage" />
+                </ComposedChart>
+              </ResponsiveContainer>
             </ChartContainer>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
@@ -314,7 +312,7 @@ const PriceOutlook = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {category.factors.map((factor, idx) => (
                       <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                        <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold mt-0.5">
+                        <div className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-content-center text-sm font-bold mt-0.5">
                           {idx + 1}
                         </div>
                         <p className="text-sm text-gray-700">{factor}</p>
@@ -411,23 +409,21 @@ const PriceOutlook = () => {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Critical Infrastructure</h3>
                 <ChartContainer height="300px">
-                  <ChartContainer config={chartConfig}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={criticalInfrastructure}>
-                        <XAxis 
-                          dataKey="location" 
-                          angle={-45}
-                          textAnchor="end"
-                          height={100}
-                          interval={0}
-                          fontSize={12}
-                        />
-                        <YAxis label={{ value: 'Million Barrels/Day', angle: -90, position: 'insideLeft' }} />
-                        <ChartTooltip content={<ChartTooltipContent />} />
-                        <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={criticalInfrastructure}>
+                      <XAxis 
+                        dataKey="location" 
+                        angle={-45}
+                        textAnchor="end"
+                        height={100}
+                        interval={0}
+                        fontSize={12}
+                      />
+                      <YAxis label={{ value: 'Million Barrels/Day', angle: -90, position: 'insideLeft' }} />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </ChartContainer>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
