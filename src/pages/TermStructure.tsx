@@ -165,9 +165,16 @@ const TermStructure = () => {
                 <div className="chart-container">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={historicalCurves2009}>
-                        <XAxis dataKey="month" />
-                        <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
+                      <LineChart data={historicalCurves2009} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                        <XAxis 
+                          dataKey="month" 
+                          tick={{ fontSize: 12 }}
+                          tickMargin={10}
+                        />
+                        <YAxis 
+                          label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }}
+                          tick={{ fontSize: 12 }}
+                        />
                         <ChartTooltip content={<ChartTooltipContent />} />
                         <Line 
                           type="monotone" 
@@ -187,9 +194,16 @@ const TermStructure = () => {
                 <div className="chart-container">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={historicalCurves2012}>
-                        <XAxis dataKey="month" />
-                        <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
+                      <LineChart data={historicalCurves2012} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                        <XAxis 
+                          dataKey="month" 
+                          tick={{ fontSize: 12 }}
+                          tickMargin={10}
+                        />
+                        <YAxis 
+                          label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }}
+                          tick={{ fontSize: 12 }}
+                        />
                         <ChartTooltip content={<ChartTooltipContent />} />
                         <Line 
                           type="monotone" 
@@ -260,16 +274,20 @@ const TermStructure = () => {
             <div className="chart-container wti-spread-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={wtiSpreadData}>
+                  <ComposedChart data={wtiSpreadData} margin={{ top: 20, right: 30, left: 20, bottom: 120 }}>
                     <XAxis 
                       dataKey="period" 
                       angle={-45}
                       textAnchor="end"
-                      height={100}
+                      height={140}
                       interval={0}
                       fontSize={12}
+                      tickMargin={20}
                     />
-                    <YAxis label={{ value: 'Spread ($/barrel)', angle: -90, position: 'insideLeft' }} />
+                    <YAxis 
+                      label={{ value: 'Spread ($/barrel)', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
+                    />
                     <ChartTooltip 
                       content={({ active, payload, label }) => {
                         if (active && payload && payload.length) {

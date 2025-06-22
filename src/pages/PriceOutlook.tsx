@@ -196,10 +196,27 @@ const PriceOutlook = () => {
             <div className="chart-container price-outlook-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={inventoryData}>
-                    <XAxis dataKey="region" angle={-45} textAnchor="end" height={80} interval={0} fontSize={12} />
-                    <YAxis yAxisId="left" label={{ value: 'Million Barrels', angle: -90, position: 'insideLeft' }} />
-                    <YAxis yAxisId="right" orientation="right" label={{ value: 'Days Coverage', angle: 90, position: 'insideRight' }} />
+                  <ComposedChart data={inventoryData} margin={{ top: 20, right: 30, left: 20, bottom: 120 }}>
+                    <XAxis 
+                      dataKey="region" 
+                      angle={-45} 
+                      textAnchor="end" 
+                      height={140} 
+                      interval={0} 
+                      fontSize={12}
+                      tickMargin={20}
+                    />
+                    <YAxis 
+                      yAxisId="left" 
+                      label={{ value: 'Million Barrels', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
+                    />
+                    <YAxis 
+                      yAxisId="right" 
+                      orientation="right" 
+                      label={{ value: 'Days Coverage', angle: 90, position: 'insideRight' }}
+                      tick={{ fontSize: 12 }}
+                    />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Bar yAxisId="left" dataKey="current" fill="#2563eb" name="Current Stocks" />
                     <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
@@ -344,9 +361,20 @@ const PriceOutlook = () => {
                 <div className="chart-container price-outlook-chart-container">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={criticalInfrastructure}>
-                        <XAxis dataKey="location" angle={-45} textAnchor="end" height={100} interval={0} fontSize={12} />
-                        <YAxis label={{ value: 'Million Barrels/Day', angle: -90, position: 'insideLeft' }} />
+                      <BarChart data={criticalInfrastructure} margin={{ top: 20, right: 30, left: 20, bottom: 120 }}>
+                        <XAxis 
+                          dataKey="location" 
+                          angle={-45} 
+                          textAnchor="end" 
+                          height={140} 
+                          interval={0} 
+                          fontSize={12}
+                          tickMargin={20}
+                        />
+                        <YAxis 
+                          label={{ value: 'Million Barrels/Day', angle: -90, position: 'insideLeft' }}
+                          tick={{ fontSize: 12 }}
+                        />
                         <ChartTooltip content={<ChartTooltipContent />} />
                         <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
                       </BarChart>

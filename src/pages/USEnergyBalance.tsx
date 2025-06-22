@@ -109,16 +109,20 @@ const USEnergyBalance = () => {
             <div className="chart-container us-energy-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={shaleBreakeven} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+                  <BarChart data={shaleBreakeven} margin={{ top: 20, right: 30, left: 20, bottom: 100 }}>
                     <XAxis 
                       dataKey="region" 
                       angle={-45}
                       textAnchor="end"
-                      height={80}
+                      height={120}
                       interval={0}
                       fontSize={12}
+                      tickMargin={15}
                     />
-                    <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
+                    <YAxis 
+                      label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
+                    />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Bar dataKey="newWells" fill="#2563eb" name="New Wells" />
                     <Bar dataKey="existingWells" fill="#16a34a" name="Existing Wells" />
@@ -159,9 +163,16 @@ const USEnergyBalance = () => {
             <div className="chart-container us-energy-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={wtiSpread}>
-                    <XAxis dataKey="year" />
-                    <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
+                  <LineChart data={wtiSpread} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                    <XAxis 
+                      dataKey="year" 
+                      tick={{ fontSize: 12 }}
+                      tickMargin={10}
+                    />
+                    <YAxis 
+                      label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
+                    />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Line 
                       type="monotone" 

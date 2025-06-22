@@ -160,13 +160,16 @@ const EnergyTransformation = () => {
             <div className="chart-container production-profile-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={productionProfiles}>
+                  <LineChart data={productionProfiles} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
                     <XAxis 
                       dataKey="year" 
                       label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
+                      tick={{ fontSize: 12 }}
+                      tickMargin={10}
                     />
                     <YAxis 
                       label={{ value: '% of Initial Production', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
                     />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Line 
@@ -213,9 +216,16 @@ const EnergyTransformation = () => {
             <div className="chart-container refining-margin-chart-container">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={refiningMargins}>
-                    <XAxis dataKey="month" />
-                    <YAxis label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }} />
+                  <LineChart data={refiningMargins} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
+                    <XAxis 
+                      dataKey="month" 
+                      tick={{ fontSize: 12 }}
+                      tickMargin={10}
+                    />
+                    <YAxis 
+                      label={{ value: '$/barrel', angle: -90, position: 'insideLeft' }}
+                      tick={{ fontSize: 12 }}
+                    />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Line 
                       type="monotone" 
