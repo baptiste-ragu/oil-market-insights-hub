@@ -113,7 +113,7 @@ const TermStructure = () => {
       title="Term Structure Analysis" 
       description="Forward curve dynamics, contango, and backwardation patterns"
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         {/* Forward Curve Dynamics */}
         <Card>
           <CardHeader>
@@ -162,7 +162,7 @@ const TermStructure = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <div>
                 <h4 className="text-lg font-semibold text-green-800 mb-4">March 2009 - Super Contango</h4>
-                <div className="h-80">
+                <div className="h-64">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={historicalCurves2009}>
@@ -184,7 +184,7 @@ const TermStructure = () => {
 
               <div>
                 <h4 className="text-lg font-semibold text-red-800 mb-4">March 2012 - Backwardation</h4>
-                <div className="h-80">
+                <div className="h-64">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={historicalCurves2012}>
@@ -256,7 +256,7 @@ const TermStructure = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96 mb-6">
+            <div className="h-80 mb-6">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={wtiSpreadData}>
