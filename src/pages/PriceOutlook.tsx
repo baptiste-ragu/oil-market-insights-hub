@@ -1,10 +1,12 @@
-
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, ComposedChart, Area, AreaChart } from 'recharts';
 import { Activity, TrendingUp, Globe, AlertTriangle, DollarSign, BarChart3 } from 'lucide-react';
+import LivePriceDashboard from '@/components/LivePriceDashboard';
+import NewsAggregation from '@/components/NewsAggregation';
+import ChartContainer from '@/components/ChartContainer';
 
 const PriceOutlook = () => {
   const supplyIndicators = [
@@ -189,6 +191,12 @@ const PriceOutlook = () => {
       description="Supply monitoring, demand analysis, and geopolitical risk assessment"
     >
       <div className="space-y-12">
+        {/* Live Price Dashboard */}
+        <LivePriceDashboard />
+
+        {/* News Aggregation */}
+        <NewsAggregation />
+
         {/* Supply Side Monitoring Dashboard */}
         <Card>
           <CardHeader>
@@ -203,15 +211,15 @@ const PriceOutlook = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {supplyIndicators.map((category, index) => (
-                <div key={category.category} className={`border-l-4 border-l-${category.color}-500 bg-${category.color}-50 rounded-lg p-6`}>
-                  <div className={`flex items-center gap-3 mb-4 text-${category.color}-800`}>
+                <div key={category.category} className={`border-l-4 ${category.color === 'blue' ? 'border-l-blue-500 bg-blue-50' : category.color === 'green' ? 'border-l-green-500 bg-green-50' : category.color === 'red' ? 'border-l-red-500 bg-red-50' : 'border-l-orange-500 bg-orange-50'} rounded-lg p-6`}>
+                  <div className={`flex items-center gap-3 mb-4 ${category.color === 'blue' ? 'text-blue-800' : category.color === 'green' ? 'text-green-800' : category.color === 'red' ? 'text-red-800' : 'text-orange-800'}`}>
                     {category.icon}
                     <h3 className="font-semibold">{category.category}</h3>
                   </div>
                   <ul className="space-y-2">
                     {category.indicators.map((indicator, idx) => (
-                      <li key={idx} className={`text-sm text-${category.color}-700 flex items-start gap-2`}>
-                        <span className={`w-2 h-2 rounded-full bg-${category.color}-500 mt-2 flex-shrink-0`}></span>
+                      <li key={idx} className={`text-sm ${category.color === 'blue' ? 'text-blue-700' : category.color === 'green' ? 'text-green-700' : category.color === 'red' ? 'text-red-700' : 'text-orange-700'} flex items-start gap-2`}>
+                        <span className={`w-2 h-2 rounded-full ${category.color === 'blue' ? 'bg-blue-500' : category.color === 'green' ? 'bg-green-500' : category.color === 'red' ? 'bg-red-500' : 'bg-orange-500'} mt-2 flex-shrink-0`}></span>
                         {indicator}
                       </li>
                     ))}
@@ -231,7 +239,7 @@ const PriceOutlook = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-96 mb-6">
+            <ChartContainer height="400px">
               <ChartContainer config={chartConfig}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={inventoryData}>
@@ -259,8 +267,9 @@ const PriceOutlook = () => {
                   </ComposedChart>
                 </ResponsiveContainer>
               </ChartContainer>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            </ChartContainer>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <h4 className="font-semibold text-blue-800 mb-2">OECD Total Stocks</h4>
                 <p className="text-sm text-blue-700">
@@ -401,7 +410,7 @@ const PriceOutlook = () => {
               {/* Critical Infrastructure */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Critical Infrastructure</h3>
-                <div className="h-64 mb-4">
+                <ChartContainer height="300px">
                   <ChartContainer config={chartConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={criticalInfrastructure}>
@@ -419,8 +428,9 @@ const PriceOutlook = () => {
                       </BarChart>
                     </ResponsiveContainer>
                   </ChartContainer>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                </ChartContainer>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                   {criticalInfrastructure.map((infra, index) => (
                     <div key={infra.location} className="p-4 bg-red-50 rounded-lg">
                       <h4 className="font-semibold text-red-800">{infra.location}</h4>

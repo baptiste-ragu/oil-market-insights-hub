@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,4 +101,61 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Chart Container Fixes */
+.chart-container {
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: white;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Responsive Chart Fixes */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 300px !important;
+    margin: 15px 0;
+  }
+  
+  .chart-wrapper {
+    padding: 5px;
+  }
+}
+
+/* Recharts specific fixes */
+.recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.recharts-surface {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Loading and Error States */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #ef4444;
+  font-weight: 500;
 }
