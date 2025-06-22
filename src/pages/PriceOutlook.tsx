@@ -1,12 +1,12 @@
+
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, ComposedChart, Area, AreaChart } from 'recharts';
 import { Activity, TrendingUp, Globe, AlertTriangle, DollarSign, BarChart3 } from 'lucide-react';
 import LivePriceDashboard from '@/components/LivePriceDashboard';
 import NewsAggregation from '@/components/NewsAggregation';
-import ChartContainer from '@/components/ChartContainer';
 
 const PriceOutlook = () => {
   const supplyIndicators = [
@@ -239,8 +239,8 @@ const PriceOutlook = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer height="400px">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="h-96">
+              <ChartContainer config={chartConfig}>
                 <ComposedChart data={inventoryData}>
                   <XAxis 
                     dataKey="region" 
@@ -264,8 +264,8 @@ const PriceOutlook = () => {
                   <Bar yAxisId="left" dataKey="fiveYearAvg" fill="#16a34a" name="5-Year Average" />
                   <Line yAxisId="right" type="monotone" dataKey="daysCoverage" stroke="#dc2626" strokeWidth={3} name="Days Coverage" />
                 </ComposedChart>
-              </ResponsiveContainer>
-            </ChartContainer>
+              </ChartContainer>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="p-4 bg-blue-50 rounded-lg">
@@ -408,8 +408,8 @@ const PriceOutlook = () => {
               {/* Critical Infrastructure */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Critical Infrastructure</h3>
-                <ChartContainer height="300px">
-                  <ResponsiveContainer width="100%" height="100%">
+                <div className="h-80">
+                  <ChartContainer config={chartConfig}>
                     <BarChart data={criticalInfrastructure}>
                       <XAxis 
                         dataKey="location" 
@@ -423,8 +423,8 @@ const PriceOutlook = () => {
                       <ChartTooltip content={<ChartTooltipContent />} />
                       <Bar dataKey="flow" fill="#dc2626" name="Daily Flow (Mb/d)" />
                     </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
+                  </ChartContainer>
+                </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                   {criticalInfrastructure.map((infra, index) => (
