@@ -128,18 +128,18 @@ const TermStructure = () => {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {contangoBackwardation.map((structure, index) => (
-                <div key={structure.concept} className={`border-l-4 border-l-${structure.color}-500 bg-${structure.color}-50 rounded-lg p-6`}>
-                  <div className={`flex items-center gap-3 mb-4 text-${structure.color}-800`}>
+                <div key={structure.concept} className={`border-l-4 ${structure.color === 'green' ? 'border-l-green-500 bg-green-50' : 'border-l-red-500 bg-red-50'} rounded-lg p-6`}>
+                  <div className={`flex items-center gap-3 mb-4 ${structure.color === 'green' ? 'text-green-800' : 'text-red-800'}`}>
                     {structure.icon}
                     <h3 className="text-xl font-semibold">{structure.concept}</h3>
                   </div>
-                  <p className={`text-${structure.color}-700 mb-4 font-medium`}>
+                  <p className={`${structure.color === 'green' ? 'text-green-700' : 'text-red-700'} mb-4 font-medium`}>
                     {structure.description}
                   </p>
                   <ul className="space-y-2">
                     {structure.characteristics.map((char, idx) => (
-                      <li key={idx} className={`text-sm text-${structure.color}-600 flex items-start gap-2`}>
-                        <span className={`w-2 h-2 rounded-full bg-${structure.color}-500 mt-2 flex-shrink-0`}></span>
+                      <li key={idx} className={`text-sm ${structure.color === 'green' ? 'text-green-600' : 'text-red-600'} flex items-start gap-2`}>
+                        <span className={`w-2 h-2 rounded-full ${structure.color === 'green' ? 'bg-green-500' : 'bg-red-500'} mt-2 flex-shrink-0`}></span>
                         {char}
                       </li>
                     ))}
@@ -288,7 +288,7 @@ const TermStructure = () => {
                     />
                     <Bar 
                       dataKey="spread" 
-                      fill={(entry) => entry.spread > 0 ? "#16a34a" : "#dc2626"}
+                      fill="#16a34a"
                       name="Front Month - Second Month Spread"
                     />
                   </ComposedChart>
