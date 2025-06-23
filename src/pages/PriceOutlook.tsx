@@ -1,3 +1,4 @@
+
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,7 +30,7 @@ const PriceOutlook = () => {
   const fundamentalFactors = [
     {
       title: 'Supply/Demand Balance',
-      icon: <TrendingUp className="h-5 w-5" />,
+      icon: TrendingUp,
       description: 'Global oil market balance and inventory levels',
       details: [
         'OPEC+ production decisions',
@@ -40,7 +41,7 @@ const PriceOutlook = () => {
     },
     {
       title: 'Geopolitical Risks',
-      icon: <AlertCircle className="h-5 w-5" />,
+      icon: AlertCircle,
       description: 'Political instability and conflicts',
       details: [
         'Middle East tensions',
@@ -51,7 +52,7 @@ const PriceOutlook = () => {
     },
     {
       title: 'Economic Indicators',
-      icon: <Calculator className="h-5 w-5" />,
+      icon: Calculator,
       description: 'Macroeconomic trends and financial markets',
       details: [
         'GDP growth',
@@ -62,7 +63,7 @@ const PriceOutlook = () => {
     },
     {
       title: 'Market Sentiment',
-      icon: <Target className="h-5 w-5" />,
+      icon: Target,
       description: 'Investor expectations and speculative activity',
       details: [
         'Hedge fund positioning',
@@ -117,23 +118,26 @@ const PriceOutlook = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {fundamentalFactors.map((factor, index) => (
-                <div key={factor.title} className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-3 mb-3">
-                    <factor.icon className="h-5 w-5 text-gray-500" />
-                    <h4 className="font-semibold text-gray-800">{factor.title}</h4>
+              {fundamentalFactors.map((factor, index) => {
+                const IconComponent = factor.icon;
+                return (
+                  <div key={factor.title} className="p-4 border rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <IconComponent className="h-5 w-5 text-gray-500" />
+                      <h4 className="font-semibold text-gray-800">{factor.title}</h4>
+                    </div>
+                    <p className="text-sm text-gray-600">{factor.description}</p>
+                    <ul className="mt-3 space-y-1 text-sm text-gray-500">
+                      {factor.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-sm text-gray-600">{factor.description}</p>
-                  <ul className="mt-3 space-y-1 text-sm text-gray-500">
-                    {factor.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </CardContent>
         </Card>
@@ -190,23 +194,26 @@ const PriceOutlook = () => {
 
         {/* Fundamental Price Factors */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {fundamentalFactors.map((factor, index) => (
-            <div key={factor.title} className="p-4 border rounded-lg">
-              <div className="flex items-center gap-3 mb-3">
-                <factor.icon className="h-5 w-5 text-gray-500" />
-                <h4 className="font-semibold text-gray-800">{factor.title}</h4>
+          {fundamentalFactors.map((factor, index) => {
+            const IconComponent = factor.icon;
+            return (
+              <div key={factor.title} className="p-4 border rounded-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <IconComponent className="h-5 w-5 text-gray-500" />
+                  <h4 className="font-semibold text-gray-800">{factor.title}</h4>
+                </div>
+                <p className="text-sm text-gray-600">{factor.description}</p>
+                <ul className="mt-3 space-y-1 text-sm text-gray-500">
+                  {factor.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="text-sm text-gray-600">{factor.description}</p>
-              <ul className="mt-3 space-y-1 text-sm text-gray-500">
-                {factor.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* News and Analysis Section */}
