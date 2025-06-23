@@ -4,8 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LineChart, Line, ComposedChart, Area, AreaChart } from 'recharts';
 import { Activity, TrendingUp, Globe, AlertTriangle, DollarSign, BarChart3 } from 'lucide-react';
-import LivePriceDashboard from '@/components/LivePriceDashboard';
-import NewsAggregation from '@/components/NewsAggregation';
+import OilPricesDashboard from '@/components/OilPricesDashboard';
+import NewsSection from '@/components/NewsSection';
 
 const PriceOutlook = () => {
   const supplyIndicators = [{
@@ -149,11 +149,11 @@ const PriceOutlook = () => {
       description="Supply monitoring, demand analysis, and geopolitical risk assessment"
     >
       <div className="space-y-12">
-        {/* Live Price Dashboard */}
-        <LivePriceDashboard />
+        {/* Live Price Dashboard - New Component */}
+        <OilPricesDashboard />
 
-        {/* News Aggregation */}
-        <NewsAggregation />
+        {/* News Aggregation - New Component */}
+        <NewsSection />
 
         {/* Supply Side Monitoring Dashboard */}
         <Card>
