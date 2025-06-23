@@ -71,7 +71,7 @@ const CommodityDerivatives = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h4 className="font-semibold text-lg">Part I: Futures Trading & Book Management</h4>
+                <h4 className="font-semibold text-lg">Part I: Futures Trading &amp; Book Management</h4>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>• Theoretical foundations of commodity pricing</li>
                   <li>• Stochastic models for spot prices</li>
@@ -82,7 +82,7 @@ const CommodityDerivatives = () => {
                 </ul>
               </div>
               <div className="space-y-4">
-                <h4 className="font-semibold text-lg">Part II: Options Trading & Risk Management</h4>
+                <h4 className="font-semibold text-lg">Part II: Options Trading &amp; Risk Management</h4>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>• Commodity options pricing models</li>
                   <li>• Volatility modeling and smile dynamics</li>
@@ -170,11 +170,11 @@ const CommodityDerivatives = () => {
                       <div className="space-y-3">
                         <div className="p-3 bg-green-50 rounded">
                           <strong className="text-green-700">Backwardation:</strong>
-                          <p className="text-sm text-green-600">Futures < Spot (High convenience yield)</p>
+                          <p className="text-sm text-green-600">Futures &lt; Spot (High convenience yield)</p>
                         </div>
                         <div className="p-3 bg-red-50 rounded">
                           <strong className="text-red-700">Contango:</strong>
-                          <p className="text-sm text-red-600">Futures > Spot (Low convenience yield)</p>
+                          <p className="text-sm text-red-600">Futures &gt; Spot (Low convenience yield)</p>
                         </div>
                       </div>
                     </div>
@@ -460,7 +460,7 @@ const CommodityDerivatives = () => {
                       <div className="bg-blue-50 p-4 rounded-lg">
                         <strong>Expected Shortfall (ES)</strong>
                         <div className="text-sm mt-2">
-                          ES = E[Loss | Loss > VaR]
+                          ES = E[Loss | Loss &gt; VaR]
                           <p className="mt-1">Captures tail risk beyond VaR threshold</p>
                         </div>
                       </div>
@@ -498,7 +498,7 @@ const CommodityDerivatives = () => {
                         <ul className="mt-2 space-y-1 text-xs">
                           <li>• 2008 Financial Crisis</li>
                           <li>• 2020 Oil Price Collapse</li>
-                          <li>• Gulf War I & II</li>
+                          <li>• Gulf War I &amp; II</li>
                           <li>• 2014 Oil Price Decline</li>
                         </ul>
                       </div>
