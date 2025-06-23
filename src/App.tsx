@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +16,7 @@ import RiskManagement from "./pages/RiskManagement";
 import TermStructure from "./pages/TermStructure";
 import PriceOutlook from "./pages/PriceOutlook";
 import NotFound from "./pages/NotFound";
+import CommodityDerivatives from "./pages/CommodityDerivatives";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +39,7 @@ const App = () => (
           <Route path="/risk-management" element={<RiskManagement />} />
           <Route path="/term-structure" element={<TermStructure />} />
           <Route path="/price-outlook" element={<PriceOutlook />} />
+          <Route path="/commodity-derivatives" element={<CommodityDerivatives />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
