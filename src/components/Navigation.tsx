@@ -17,6 +17,7 @@ const navigationItems = [
   { name: 'Risk Management', path: '/risk-management', description: 'Hedging Strategies' },
   { name: 'Term Structure', path: '/term-structure', description: 'Forward Curves' },
   { name: 'Price Outlook', path: '/price-outlook', description: 'Market Analysis Framework' },
+  { name: 'Commodity Derivatives', path: '/commodity-derivatives', description: 'Trading Guide for Practitioners' },
 ];
 
 const Navigation = () => {

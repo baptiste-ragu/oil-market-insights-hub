@@ -37,9 +37,9 @@ const featuredSections = [
     color: 'bg-green-50 border-green-200 hover:bg-green-100',
   },
   {
-    title: 'Consumption Patterns',
-    description: 'Analyze regional consumption trends and demand drivers',
-    path: '/consumption',
+    title: 'Commodity Derivatives Trading',
+    description: 'Advanced trading strategies and risk management from a practitioner perspective',
+    path: '/commodity-derivatives',
     color: 'bg-purple-50 border-purple-200 hover:bg-purple-100',
   },
   {
