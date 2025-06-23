@@ -1,8 +1,8 @@
-
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Layout from '@/components/Layout';
 import ChartContainer from '@/components/ChartContainer';
+import GlobalSupplyConcentration from '@/components/GlobalSupplyConcentration';
 
 const reservesData = [
   { region: 'Middle East', reserves: 836, percentage: 48.4, color: '#3b82f6' },
@@ -46,6 +46,9 @@ const Reserves = () => {
       description="Comprehensive analysis of worldwide proven reserves distribution and production statistics"
     >
       <div className="space-y-12">
+        {/* Global Supply Concentration Risk - NEW SECTION */}
+        <GlobalSupplyConcentration />
+
         {/* World Proven Reserves */}
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">World Proven Reserves Distribution</h2>

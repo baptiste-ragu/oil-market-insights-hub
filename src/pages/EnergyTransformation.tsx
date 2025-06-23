@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, BarChart, Bar, ComposedChart, Area, AreaChart } from 'recharts';
 import { Factory, Ship, TrendingUp, MapPin } from 'lucide-react';
+import OilFieldLifecycle from '@/components/OilFieldLifecycle';
 
 const EnergyTransformation = () => {
   const productionProfiles = [
@@ -124,6 +125,9 @@ const EnergyTransformation = () => {
       description="Upstream revolution, downstream transformation, and emerging trade routes"
     >
       <div className="space-y-12">
+        {/* Oil Field Lifecycle Analysis - NEW SECTION */}
+        <OilFieldLifecycle />
+
         {/* Three Transformation Areas Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {transformationAreas.map((area, index) => (
