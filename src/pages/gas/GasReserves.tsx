@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Zap, Globe, ArrowLeft, MapPin, Truck, Ship } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, ComposedChart } from 'recharts';
 
 const globalReservesData = [
   { country: 'Russia', reserves: 47.8, percentage: 27.9 },
@@ -99,7 +99,7 @@ const GasReserves = () => {
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="country" angle={-45} textAnchor="end" height={100} />
                     <YAxis label={{ value: 'Tcm', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip formatter={(value) => [`${value} Tcm`, 'Reserves')} />
+                    <Tooltip formatter={(value) => [`${value} Tcm`, 'Reserves']} />
                     <Bar dataKey="reserves" fill="#8884d8" />
                   </BarChart>
                 </ResponsiveContainer>
@@ -176,7 +176,7 @@ const GasReserves = () => {
             </div>
             <div className="h-96">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={regionalProductionData}>
+                <ComposedChart data={regionalProductionData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="region" angle={-45} textAnchor="end" height={100} />
                   <YAxis yAxisId="left" orientation="left" label={{ value: 'Bcm/Tcm', angle: -90, position: 'insideLeft' }} />
@@ -186,14 +186,14 @@ const GasReserves = () => {
                   <Bar yAxisId="left" dataKey="production" fill="#8884d8" name="Production (Bcm)" />
                   <Bar yAxisId="left" dataKey="reserves" fill="#82ca9d" name="Reserves (Tcm)" />
                   <Line yAxisId="right" dataKey="ratio" stroke="#ff7300" name="R/P Ratio (years)" />
-                </BarChart>
+                </ComposedChart>
               </ResponsiveContainer>
             </div>
             <div className="mt-4 bg-purple-50 p-4 rounded-lg">
               <h4 className="font-semibold text-purple-800 mb-2">Reserve-to-Production Analysis</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h5 className="font-medium text-purple-700 mb-1">Long Reserve Life (>70 years)</h5>
+                  <h5 className="font-medium text-purple-700 mb-1">Long Reserve Life (greater than 70 years)</h5>
                   <ul className="text-sm text-purple-600 space-y-1">
                     <li>• Middle East: 109.5 years</li>
                     <li>• CIS: 73.7 years</li>
@@ -201,7 +201,7 @@ const GasReserves = () => {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="font-medium text-purple-700 mb-1">Shorter Reserve Life (<30 years)</h5>
+                  <h5 className="font-medium text-purple-700 mb-1">Shorter Reserve Life (less than 30 years)</h5>
                   <ul className="text-sm text-purple-600 space-y-1">
                     <li>• Asia Pacific: 24.6 years</li>
                     <li>• Europe: 17.3 years</li>

@@ -202,7 +202,7 @@ const EuropeanGasBalance = () => {
                 </ul>
               </Card>
               <Card className="p-4 bg-purple-50">
-                <h4 className="font-semib Regularization Regularization</h4>
+                <h4 className="font-semibold text-purple-800">FSRU Deployment</h4>
                 <ul className="text-sm text-purple-700 mt-2 space-y-1">
                   <li>• Lithuania: 4.0 Bcm FSRU</li>
                   <li>• Greece: 6.1 Bcm FSRU</li>
