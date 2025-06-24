@@ -22,9 +22,11 @@ import TermStructure from "./pages/TermStructure";
 import PriceOutlook from "./pages/PriceOutlook";
 import CommodityDerivatives from "./pages/CommodityDerivatives";
 
-// Gas section pages (placeholders)
+// Gas section pages
 import GasReserves from "./pages/gas/GasReserves";
 import GasFundamentals from "./pages/gas/GasFundamentals";
+import GasConsumption from "./pages/gas/GasConsumption";
+import PhysicalGasMarkets from "./pages/gas/PhysicalGasMarkets";
 import EuropeanGasBalance from "./pages/gas/EuropeanGasBalance";
 import GasTrading from "./pages/gas/GasTrading";
 import GasTermStructure from "./pages/gas/GasTermStructure";

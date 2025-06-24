@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Zap, Globe, BarChart3, PieChart, ArrowLeft, Menu } from 'lucide-react';
+import { Zap, Globe, BarChart3, PieChart, ArrowLeft, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -26,35 +26,40 @@ const featuredSections = [
     color: 'bg-blue-50 border-blue-200 hover:bg-blue-100',
   },
   {
-    title: 'Trading & Financial Markets',
-    description: 'Hub-based pricing and OTC derivatives',
-    path: '/gas/trading',
+    title: 'Physical Markets',
+    description: 'Traditional contracts and market structure evolution',
+    path: '/gas/physical-markets',
     color: 'bg-purple-50 border-purple-200 hover:bg-purple-100',
   },
   {
-    title: 'Gas Derivatives',
-    description: 'Storage optimization and swing options',
-    path: '/gas/derivatives',
+    title: 'Gas Consumption',
+    description: 'Sectoral demand patterns and seasonal consumption',
+    path: '/gas/consumption',
     color: 'bg-orange-50 border-orange-200 hover:bg-orange-100',
   },
 ];
 
-const quickAccessSections = [
+const allGasSections = [
   { name: 'Fundamentals', path: '/gas/fundamentals' },
   { name: 'Reserves & Production', path: '/gas/reserves' },
-  { name: 'European Balance', path: '/gas/european-balance' },
-  { name: 'Trading Markets', path: '/gas/trading' },
+  { name: 'Consumption', path: '/gas/consumption' },
+  { name: 'Physical Markets', path: '/gas/physical-markets' },
+  { name: 'Energy Transformation', path: '/gas/energy-transformation' },
+  { name: 'European Energy Balance', path: '/gas/european-balance' },
+  { name: 'Futures Markets', path: '/gas/futures-markets' },
+  { name: 'OTC Markets', path: '/gas/otc-markets' },
+  { name: 'Risk Management', path: '/gas/risk-management' },
   { name: 'Term Structure', path: '/gas/term-structure' },
   { name: 'Price Outlook', path: '/gas/price-outlook' },
-  { name: 'Derivatives', path: '/gas/derivatives' },
+  { name: 'Commodity Derivatives', path: '/gas/derivatives' },
 ];
 
 const GasHomepage = () => {
-  const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
+  const [isSectionsOpen, setIsSectionsOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      {/* Header with Oil Section Navigation Pattern */}
       <nav className="bg-white shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -67,33 +72,41 @@ const GasHomepage = () => {
               <span className="ml-2 text-xl font-bold text-gray-900">Global Gas Markets</span>
             </div>
             
-            {/* Quick Access Menu */}
-            <div className="relative">
-              <Button
-                variant="outline"
-                onClick={() => setIsQuickAccessOpen(!isQuickAccessOpen)}
-                className="flex items-center gap-2"
-              >
-                <Menu className="h-4 w-4" />
-                Quick Access
-              </Button>
+            {/* Persistent Navigation - Oil Section Pattern */}
+            <div className="flex items-center space-x-4">
+              <Link to="/gas">
+                <Button variant="outline" className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100">
+                  Home
+                </Button>
+              </Link>
               
-              {isQuickAccessOpen && (
-                <div className="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-50 border">
-                  <div className="py-2">
-                    {quickAccessSections.map((section) => (
-                      <Link
-                        key={section.path}
-                        to={section.path}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsQuickAccessOpen(false)}
-                      >
-                        {section.name}
-                      </Link>
-                    ))}
+              <div className="relative">
+                <Button
+                  variant="outline"
+                  onClick={() => setIsSectionsOpen(!isSectionsOpen)}
+                  className="flex items-center gap-2"
+                >
+                  Sections
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+                
+                {isSectionsOpen && (
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-50 border">
+                    <div className="py-2">
+                      {allGasSections.map((section) => (
+                        <Link
+                          key={section.path}
+                          to={section.path}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={() => setIsSectionsOpen(false)}
+                        >
+                          {section.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
